@@ -63,13 +63,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Countries = () => {
+  const [allCountries, setAllCountries] = useState([]);
   const [countries, setCountries] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchCountries = async () => {
       const countries = await countryService.getAll();
+      setAllCountries(countries);
       setCountries(countries);
     };
 
@@ -89,17 +92,21 @@ const Countries = () => {
     const itemOffset = currentPage * rowsPerPage;
     const endOffset = itemOffset + rowsPerPage;
     const itemsToView = data.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(data.length / rowsPerPage);
-    return {
-      items: itemsToView,
-      pageCount: pageCount,
-    };
+    return itemsToView;
   };
 
-  if (!countries) return <h2>Loading</h2>;
+  const searchByName = () => {
+    const result = allCountries.filter((country) =>
+      JSON.stringify(country.name).toLowerCase().includes(search.toLowerCase())
+    );
+    setCountries(result);
+    setPage(0);
+    setSearch("");
+  };
 
-  // console.log(countries);
   const countriesToShow = paginationLoader(countries, page, rowsPerPage);
+
+  console.log(countriesToShow);
 
   return (
     <>
@@ -122,6 +129,14 @@ const Countries = () => {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    console.log("Pressed enter");
+                    searchByName();
+                  }
+                }}
               />
             </Search>
           </Toolbar>
@@ -140,7 +155,7 @@ const Countries = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {countriesToShow.items.map((c) => (
+            {countriesToShow.map((c) => (
               <TableRow key={c.ccn3}>
                 <TableCell>
                   <img
@@ -171,7 +186,7 @@ const Countries = () => {
         </Table>
         <TablePagination
           component="div"
-          count={countriesToShow.pageCount}
+          count={countries.length}
           page={page}
           onPageChange={handleChangePage}
           rowsPerPage={rowsPerPage}
