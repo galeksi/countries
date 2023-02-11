@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Countries from "./Components/Countries";
-import Country from "./Components/Country";
-import { Container } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Countries from './Components/Countries'
+import Country from './Components/Country'
+import { Container } from '@mui/material'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         </Routes>
       </Router>
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App

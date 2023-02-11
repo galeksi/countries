@@ -1,67 +1,67 @@
-import { styled, alpha } from "@mui/material/styles";
-import { InputBase } from "@mui/material";
+import { styled, alpha } from '@mui/material/styles'
+import { InputBase } from '@mui/material'
 
-export const Search = styled("div")(({ theme }) => ({
-  position: "relative",
+export const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
+  '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
-    width: "auto",
+    width: 'auto',
   },
-}));
+}))
 
-export const SearchIconWrapper = styled("div")(({ theme }) => ({
+export const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}))
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
+  color: 'inherit',
+  '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
       },
     },
   },
-}));
+}))
 
 export const stringToColor = (string) => {
-  let hash = 0;
-  let i;
+  let hash = 0
+  let i
   /* eslint-disable no-bitwise */
   for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+    hash = string.charCodeAt(i) + ((hash << 5) - hash)
   }
-  let color = "#";
+  let color = '#'
 
   for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
+    const value = (hash >> (i * 8)) & 0xff
+    color += `00${value.toString(16)}`.slice(-2)
   }
   /* eslint-enable no-bitwise */
-  return color;
-};
+  return color
+}
 
-export const Prime = styled("b")(({ theme }) => ({
+export const Prime = styled('b')(({ theme }) => ({
   ...theme.typography.h6,
   color: theme.palette.primary.main,
-  fontWeight: "bold",
-}));
+  fontWeight: 'bold',
+}))
