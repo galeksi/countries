@@ -177,7 +177,7 @@ const Countries = () => {
                 </TableCell>
                 <TableCell>
                   <Link to={`/${c.name.common}`}>
-                    <ArrowForwardIosRoundedIcon />
+                    <ArrowForwardIosRoundedIcon color="primary" />
                   </Link>
                 </TableCell>
               </TableRow>
