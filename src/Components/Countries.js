@@ -37,7 +37,6 @@ const Countries = () => {
       setAllCountries(countries);
       setCountries(countries);
     };
-
     fetchCountries();
   }, []);
 
@@ -51,6 +50,7 @@ const Countries = () => {
   };
 
   const searchByName = () => {
+    // console.log(allCountries);
     const result = allCountries.filter((country) =>
       JSON.stringify(country.name).toLowerCase().includes(search.toLowerCase())
     );
@@ -106,7 +106,7 @@ const Countries = () => {
               <TableCell sx={{ fontWeight: "bold" }}>Details</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="countrytablebody">
             {countriesToShow.map((c) => (
               <TableRow key={c.ccn3}>
                 <TableCell>
@@ -129,7 +129,10 @@ const Countries = () => {
                 </TableCell>
                 <TableCell>
                   <Link to={`/countries/${c.name.common}`}>
-                    <ArrowForwardIosRoundedIcon color="primary" />
+                    <ArrowForwardIosRoundedIcon
+                      className="countryDetailButton"
+                      color="primary"
+                    />
                   </Link>
                 </TableCell>
               </TableRow>

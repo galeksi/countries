@@ -62,8 +62,12 @@ const Country = () => {
             gained independence.
           </Typography>
           <Box display="flex" justifyContent="left" alignItems="center">
-            <Link to={`/`}>
-              <ArrowBackIosRoundedIcon fontSize="large" color="action" />
+            <Link to={`/countries`}>
+              <ArrowBackIosRoundedIcon
+                className="countryDetailBack"
+                fontSize="large"
+                color="action"
+              />
             </Link>
             <Link to={`${country.maps.googleMaps}`} target="_blank">
               <LocationOnIcon fontSize="large" color="primary" />
