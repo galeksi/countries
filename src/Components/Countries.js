@@ -128,7 +128,7 @@ const Countries = () => {
                   </ul>
                 </TableCell>
                 <TableCell>
-                  <Link to={`/${c.name.common}`}>
+                  <Link to={`/countries/${c.name.common}`}>
                     <ArrowForwardIosRoundedIcon color="primary" />
                   </Link>
                 </TableCell>

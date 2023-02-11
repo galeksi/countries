@@ -8,8 +8,8 @@ function App() {
     <Container>
       <Router>
         <Routes>
-          <Route path="/" element={<Countries />} />
-          <Route path="/:name" element={<Country />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/countries/:name" element={<Country />} />
         </Routes>
       </Router>
     </Container>
