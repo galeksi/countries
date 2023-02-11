@@ -1,37 +1,13 @@
 import { useState, useEffect } from "react";
-import countryService from "../Services/countries";
+import countryService from "../utils/services";
 import { useParams, Link } from "react-router-dom";
 
-// import Box from "@mui/material/Box";
-// import Stack from "@mui/material/Stack";
-// import Avatar from "@mui/material/Avatar";
+import { Typography, Box, Stack, Avatar } from "@mui/material";
+
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Typography, Box, Stack, Avatar } from "@mui/material";
-import { styled } from "@mui/material/styles";
 
-function stringToColor(string) {
-  let hash = 0;
-  let i;
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  let color = "#";
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-  /* eslint-enable no-bitwise */
-  return color;
-}
-
-const Prime = styled("b")(({ theme }) => ({
-  ...theme.typography.h6,
-  color: theme.palette.primary.main,
-  fontWeight: "bold",
-}));
+import { stringToColor, Prime } from "../utils/styles";
 
 const Country = () => {
   const [country, setCountry] = useState(null);
@@ -46,7 +22,6 @@ const Country = () => {
     fetchCountry();
   }, [name]);
 
-  console.log(country);
   if (!country) return <h2>Loading</h2>;
 
   return (

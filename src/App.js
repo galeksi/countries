@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Container } from "@mui/material";
 import Countries from "./Components/Countries";
 import Country from "./Components/Country";
+import { Container } from "@mui/material";
 
 function App() {
   return (

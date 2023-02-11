@@ -11,4 +11,5 @@ const getSingle = async (name) => {
   return request.data;
 };
 
-export default { getAll, getSingle };
+const countryService = { getAll, getSingle };
+export default countryService;

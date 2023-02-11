@@ -1,66 +1,28 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import countryService from "../Services/countries";
+import countryService from "../utils/services";
+import { paginationLoader } from "../utils/helpers";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TablePagination from "@mui/material/TablePagination";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  TablePagination,
+  Paper,
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
-import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
 import PublicIcon from "@mui/icons-material/Public";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
+import { Search, SearchIconWrapper, StyledInputBase } from "../utils/styles";
 
 const Countries = () => {
   const [allCountries, setAllCountries] = useState([]);
@@ -88,13 +50,6 @@ const Countries = () => {
     setPage(0);
   };
 
-  const paginationLoader = (data, currentPage, rowsPerPage) => {
-    const itemOffset = currentPage * rowsPerPage;
-    const endOffset = itemOffset + rowsPerPage;
-    const itemsToView = data.slice(itemOffset, endOffset);
-    return itemsToView;
-  };
-
   const searchByName = () => {
     const result = allCountries.filter((country) =>
       JSON.stringify(country.name).toLowerCase().includes(search.toLowerCase())
@@ -105,8 +60,6 @@ const Countries = () => {
   };
 
   const countriesToShow = paginationLoader(countries, page, rowsPerPage);
-
-  console.log(countriesToShow);
 
   return (
     <>
@@ -133,7 +86,6 @@ const Countries = () => {
                 onChange={(event) => setSearch(event.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    console.log("Pressed enter");
                     searchByName();
                   }
                 }}
