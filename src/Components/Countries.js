@@ -21,7 +21,6 @@ import {
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
 import PublicIcon from '@mui/icons-material/Public'
 import SearchIcon from '@mui/icons-material/Search'
-
 import { Search, SearchIconWrapper, StyledInputBase } from '../utils/styles'
 
 const Countries = () => {
@@ -40,15 +39,18 @@ const Countries = () => {
     fetchCountries()
   }, [])
 
+  // Sets page for pagination
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
 
+  // Sets the rows per pages and resets list start
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value))
     setPage(0)
   }
 
+  // Searches complete 'name' object as string in country data
   const searchByName = () => {
     // console.log(allCountries);
     const result = allCountries.filter((country) =>
@@ -59,6 +61,7 @@ const Countries = () => {
     setSearch('')
   }
 
+  // Loader sets calculates offsets and items to view
   const countriesToShow = paginationLoader(countries, page, rowsPerPage)
 
   return (

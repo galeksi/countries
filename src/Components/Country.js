@@ -3,10 +3,8 @@ import countryService from '../utils/services'
 import { useParams, Link } from 'react-router-dom'
 
 import { Typography, Box, Stack, Avatar } from '@mui/material'
-
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-
 import { stringToColor, Prime } from '../utils/styles'
 
 const Country = () => {

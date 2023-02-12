@@ -1,6 +1,7 @@
 import { styled, alpha } from '@mui/material/styles'
 import { InputBase } from '@mui/material'
 
+// MUI styling for search field
 export const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -16,6 +17,7 @@ export const Search = styled('div')(({ theme }) => ({
   },
 }))
 
+// MUI styling for search field icon
 export const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: '100%',
@@ -26,6 +28,7 @@ export const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }))
 
+// MUI styling for search input
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
@@ -43,6 +46,7 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
+// MUI styling to calculate Avatar color
 export const stringToColor = (string) => {
   let hash = 0
   let i
@@ -60,6 +64,7 @@ export const stringToColor = (string) => {
   return color
 }
 
+// MUI styling for bold text
 export const Prime = styled('b')(({ theme }) => ({
   ...theme.typography.h6,
   color: theme.palette.primary.main,
